@@ -3,6 +3,8 @@ import Root from "../loyout/Root";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import SingUp from "../pages/singUp/SingUp";
+import Checked from "../pages/checked/Checked";
+import Booking from "../pages/Booking/Booking";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,16 @@ const router = createBrowserRouter([
       {
         path: "/singUp",
         element: <SingUp></SingUp>,
+      },
+      {
+        path: "/checked/:id",
+        element: <Checked></Checked>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/service/${params.id}`),
+      },
+      {
+        path: "/booking",
+        element: <Booking></Booking>,
       },
     ],
   },
