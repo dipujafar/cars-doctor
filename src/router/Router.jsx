@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/checked/:id",
-        element: <Checked></Checked>,
+        element: (
+          <PrivateRoute>
+            <Checked></Checked>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/service/${params.id}`),
       },
