@@ -1,15 +1,13 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
 import Service from "./Service";
+import useServices from "../../../Hook/usrServices";
 
 const Services = () => {
-  const [services, setService] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/services")
-      .then((data) => setService(data.data));
-  }, []);
+  const services = useServices();
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/services")
+  //     .then((data) => setService(data.data));
+  // }, []);
   //   console.log(services);
   return (
     <div className="mt-10">

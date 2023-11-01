@@ -3,16 +3,17 @@ import { AuthContext } from "../../authProvider/AuthProvider";
 import axios from "axios";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const Booking = () => {
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
-  const url = `http://localhost:5000/book?email=${user?.email}`;
+  const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
-    axios
-      .get(url, { withCredentials: true })
-      .then((res) => setBooking(res.data));
-  }, [url]);
+    const url = `/book?email=${user?.email}`;
+    axiosSecure.get(url).then((res) => setBooking(res.data));
+  }, [user, axiosSecure]);
 
   //delete
   const handleDelete = (id) => {
@@ -79,7 +80,7 @@ const Booking = () => {
             </tr>
           </thead>
           <tbody>
-            {booking.map((services) => (
+            {booking?.map((services) => (
               <BookingRow
                 key={services._id}
                 services={services}
