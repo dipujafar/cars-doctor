@@ -5,7 +5,7 @@ const Services = () => {
   const services = useServices();
   // useEffect(() => {
   //   axios
-  //     .get("http://localhost:5000/services")
+  //     .get("https://cars-doctor-server-zeta.vercel.app/services")
   //     .then((data) => setService(data.data));
   // }, []);
   //   console.log(services);

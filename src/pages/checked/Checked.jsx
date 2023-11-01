@@ -27,7 +27,7 @@ const Checked = () => {
     };
     console.log(order);
 
-    // fetch("http://localhost:5000/book", {
+    // fetch("https://cars-doctor-server-zeta.vercel.app/book", {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",
@@ -38,7 +38,7 @@ const Checked = () => {
     //   .then((data) => console.log(data));
 
     axios
-      .post("http://localhost:5000/book", order)
+      .post("https://cars-doctor-server-zeta.vercel.app/book", order)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

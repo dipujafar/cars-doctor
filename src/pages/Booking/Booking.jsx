@@ -27,21 +27,25 @@ const Booking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/book/${id}`).then((res) => {
-          console.log(res.data);
-          if (res.data.deletedCount > 0) {
-            const remaining = booking.filter((service) => service._id !== id);
-            setBooking(remaining);
-            Swal.fire("Deleted!", "The service has been deleted.", "success");
-          }
-        });
+        axios
+          .delete(`https://cars-doctor-server-zeta.vercel.app/book/${id}`)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              const remaining = booking.filter((service) => service._id !== id);
+              setBooking(remaining);
+              Swal.fire("Deleted!", "The service has been deleted.", "success");
+            }
+          });
       }
     });
   };
 
   const handleConfirm = (id) => {
     axios
-      .patch(`http://localhost:5000/book/${id}`, { status: "confirm" })
+      .patch(`https://cars-doctor-server-zeta.vercel.app/book/${id}`, {
+        status: "confirm",
+      })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
